@@ -55,7 +55,7 @@ async def kick(ctx, member: discord.Member, *, reason='Гнев Фроста'):
     await ctx.channel.purge(limit=1)
 
     await member.kick(reason=reason)
-    await ctx.send(f'Бог в гневе и выкинул с олимпа { member.mention }')
+    await ctx.send(f'Фрост в гневе и выкинул с сервера{ member.mention }')
 
 # !ban Бан игрока
 
@@ -89,9 +89,9 @@ async def unban(ctx, *, member):
 @commands.has_permissions(administrator=True)
 async def user_mute(ctx, member: discord.Member):
     await ctx.channel.purge(limit=1)
-    mute_role = discord.utils.get(ctx.message.guild.roles, name='холоп(mute)')
+    mute_role = discord.utils.get(ctx.message.guild.roles, name='Замьюченый')
     await member.add_roles(mute_role)
-    mute_role = discord.utils.get(ctx.message.guild.roles, name='Царь')
+    mute_role = discord.utils.get(ctx.message.guild.roles, name='Мьют')
     await member.remove_roles(mute_role)
     await ctx.send(f'Фрост забрал право голоса у {member.mention}')
 
@@ -102,9 +102,9 @@ async def user_mute(ctx, member: discord.Member):
 @commands.has_permissions(administrator=True)
 async def user_unmute(ctx, member: discord.Member):
     await ctx.channel.purge(limit=1)
-    mute_role = discord.utils.get(ctx.message.guild.roles, name='Царь')
+    mute_role = discord.utils.get(ctx.message.guild.roles, name='Размьюченный')
     await member.add_roles(mute_role)
-    mute_role = discord.utils.get(ctx.message.guild.roles, name='холоп(mute)')
+    mute_role = discord.utils.get(ctx.message.guild.roles, name='Размут')
     await member.remove_roles(mute_role)
     await ctx.send(f'Фрост вернул право голоса {member.mention}')
 
