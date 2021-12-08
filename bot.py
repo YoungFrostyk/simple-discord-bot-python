@@ -6,10 +6,9 @@ client.remove_command('help')
 
 # Words
 hello_words = ['привет', 'hi', 'здарова', 'hello']
-bad_words = ['бобры твари', 'быть бобром не круто',
-             'ты не крутой бобер', 'бобры твари!',
-             'быть бобром не круто!',
-             'ты не крутой бобер!']
+bad_words = ['Фрост тварь', 'быть Фростом не круто',
+             'ты не крутой Фрост', 'Фросты твари!'
+            ]
 
 
 @client.event
@@ -30,14 +29,7 @@ async def on_member_join(member):
 @client.command()
 async def hello(ctx):
     author = ctx.message.author
-    await ctx.send(f'Даю краба {author}')
-
-# !test
-
-
-@client.command()
-async def test(ctx):
-    await ctx.send('/tts Bitch \nlol')
+    await ctx.send(f'Привет от Фроста){author}')
 
 # !echo
 
@@ -59,7 +51,7 @@ async def clear(ctx, amount=100):
 
 @client.command()
 @commands.has_permissions(administrator=True)
-async def kick(ctx, member: discord.Member, *, reason='Гнев Бога'):
+async def kick(ctx, member: discord.Member, *, reason='Гнев Фроста'):
     await ctx.channel.purge(limit=1)
 
     await member.kick(reason=reason)
@@ -74,7 +66,7 @@ async def ban(ctx, member: discord.Member, *, reason='Наверное ты и �
     await ctx.channel.purge(limit=1)
 
     await member.ban(reason=reason)
-    await ctx.send(f'О мой бог этот парень реально пререшел черту { member.mention }')
+    await ctx.send(f'Фрост сегодня злой,он забанил{ member.mention }')
 
 # !unban разбанить игрока
 
@@ -87,7 +79,7 @@ async def unban(ctx, *, member):
     for ban_entry in banned_users:
         user = ban_entry.user
         await ctx.guild.unban(user)
-        await ctx.send(f'Бог сегодня добрый , он простил {user.mention}')
+        await ctx.send(f'Фрост сегодня добрый , он простил {user.mention}')
         return
 
 # !user_mute Замутить пользователя
@@ -101,7 +93,7 @@ async def user_mute(ctx, member: discord.Member):
     await member.add_roles(mute_role)
     mute_role = discord.utils.get(ctx.message.guild.roles, name='Царь')
     await member.remove_roles(mute_role)
-    await ctx.send(f'Бог забрал право голоса у {member.mention}')
+    await ctx.send(f'Фрост забрал право голоса у {member.mention}')
 
 # !user_unmute Замутить пользователя
 
@@ -114,7 +106,7 @@ async def user_unmute(ctx, member: discord.Member):
     await member.add_roles(mute_role)
     mute_role = discord.utils.get(ctx.message.guild.roles, name='холоп(mute)')
     await member.remove_roles(mute_role)
-    await ctx.send(f'Бог вернул право голоса {member.mention}')
+    await ctx.send(f'Фрост вернул право голоса {member.mention}')
 
 # !help Список команд
 
@@ -130,46 +122,6 @@ async def help(ctx):
                    '!unban - Разбанить кого-либо (Использование только Администраторами)\n'
                    '!user_mute - Замутить кого-либо (Использование только Администраторами)\n'
                    '!user_unmute - Размутить кого-либо (Использование только Администраторами)\n'
-                   'А также 2 команды пасхалки!\n')
-
-# !help_me Special for Lucky Stranger
-
-
-@client.command()
-async def help_me(ctx):
-    await ctx.send('Help!')
-    await ctx.send('I need somebody')
-    await ctx.send('(Help!) not just anybody')
-    await ctx.send('(Help!) you know I need someone')
-    await ctx.send('Heeeeeeeeeeeelp!')
-    await ctx.send('I never needed anybodys help in any way')
-    await ctx.send('But now these days are gone, I am not so self assured (but now these days are gone)')
-    await ctx.send('(And now I find) Now I find Ive changed my mind and opened up the doors')
-    await ctx.send('Help me if you can, Im feeling down')
-    await ctx.send('And I do appreciate you being round')
-    await ctx.send('Help me get my feet back on the ground')
-    await ctx.send('Wont you please, please help me?')
-    await ctx.send('And now my life has changed in oh so many ways (and now my life has changed)')
-    await ctx.send('My independence seems to vanish in the haze')
-    await ctx.send('But every now and then I feel so insecure (I know that I)')
-    await ctx.send('I know that I just need you like Ive never done before')
-    await ctx.send('Help me if you can, Im feeling down')
-    await ctx.send('And I do appreciate you being round')
-    await ctx.send('Help me get my feet back on the ground')
-    await ctx.send('Wont you please, please help me')
-    await ctx.send('When I was younger, so much younger than today')
-    await ctx.send('I never needed anybodys help in any way')
-    await ctx.send('But now these days are gone, Im not so self assured (but now these days are gone)')
-    await ctx.send('(And now I find) now I find I ve changed my mind and opened up the doors')
-    await ctx.send('Help me if you can, Im feeling down')
-    await ctx.send('And I do appreciate you being round')
-    await ctx.send('Help me get my feet back on the ground')
-    await ctx.send('Wont you please, please help me, help me, help me, ooh')
-    await ctx.send('↓')
-    await ctx.send('↓')
-    await ctx.send('↓')
-    await ctx.send('↓')
-    await ctx.send('Трек был подготовлен специально для человека судьбы...')
 
 
 # Connect
